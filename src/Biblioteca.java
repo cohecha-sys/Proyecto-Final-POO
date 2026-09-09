@@ -31,9 +31,3 @@ import java.util.Set;
                 return true;
             }
 
-            public List<Libro> obtenerTodos() {
-                return listaLibros;
-            }
-        }
-    }
-}
