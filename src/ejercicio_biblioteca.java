@@ -7,4 +7,11 @@ package com.biblioteca;
         private String autor;
         private String isbn;
     }
+
+    public Libro(String titulo, String autor, String isbn) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.isbn = isbn;
+    }
+
 }
