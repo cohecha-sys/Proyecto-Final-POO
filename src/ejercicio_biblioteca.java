@@ -14,11 +14,13 @@ package com.biblioteca;
         this.isbn = isbn;
     }
 
-    // Métodos para obtener la información (Getters)
+
     public String getTitulo() { return titulo; }
     public String getAutor() { return autor; }
     public String getIsbn() { return isbn; }
 
-
+    public void mostrarInfo() {
+        System.out.println("ISBN: " + isbn + " | Título: " + titulo + " | Autor: " + autor);
+    }
 
 }
