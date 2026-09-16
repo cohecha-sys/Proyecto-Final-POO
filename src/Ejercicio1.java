@@ -1,32 +1,18 @@
 package com.biblioteca;
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import java.awt.*;
-import java.time.Year;
 
-public class VentanaRegistro extends JFrame {
+import java.util.Scanner;
 
-    private Biblioteca biblioteca;
+public class SistemaBiblioteca {
 
-    private JTextField txtTitulo, txtAutor, txtIsbn, txtAnio, txtCopias;
-    private JComboBox<String> cbGenero;
-    private JTable tablaLibros;
-    private DefaultTableModel modeloTabla;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Biblioteca biblioteca = new Biblioteca();
+        int opcion = 0;
 
-    private static final String[] GENEROS = {"Seleccione...", "Novela", "Ciencia", "Historia", "Infantil", "Técnico"};
+        while (opcion != 3) {
+            System.out.println("\n===== MENÚ DE BIBLIOTECA =====");
+            System.out.println("1. Registrar nuevo libro");
+            System.out.println("2. Ver todos los libros");
+            System.out.println("3. Salir");
+            System.out.print("Ingrese una opción: ");
 
-    public VentanaRegistro() {
-        biblioteca = new Biblioteca();
-
-        setTitle("Ejercicio 1: Registrar Libro");
-        setSize(750, 500);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setLayout(new BorderLayout(10, 10));
-
-        JPanel panelFormulario = new JPanel(new GridLayout(7, 2, 5, 5));
-        panelFormulario.setBorder(BorderFactory.createTitledBorder(" Formulario de Registro "));
-
-
-    }
-}
