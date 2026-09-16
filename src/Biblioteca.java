@@ -4,35 +4,44 @@ public class Biblioteca {
 package com.biblioteca;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
         public class Biblioteca {
-            private List<Libro> listaLibros;
-            private Set<String> isbnRegistrados;
+            // Array dinámico para almacenar los libros
+            private ArrayList<Libro> listaLibros;
 
             public Biblioteca() {
                 this.listaLibros = new ArrayList<>();
-                this.isbnRegistrados = new HashSet<>();
             }
 
+            // Método para validar si el ISBN ya existe usando un ciclo FOR y un IF
             public boolean existeIsbn(String isbn) {
-                return isbnRegistrados.contains(isbn.trim().toLowerCase());
+                for (int i = 0; i < listaLibros.size(); i++) {
+                    if (listaLibros.get(i).getIsbn().equalsIgnoreCase(isbn)) {
+                        return true; // Ya existe
+                    }
+                }
+                return false; // No existe
             }
 
+            // Método para agregar libro con validación
             public boolean agregarLibro(Libro libro) {
-                String isbnLimpio = libro.getIsbn().trim().toLowerCase();
-                if (existeIsbn(isbnLimpio)) {
-                    return false;
+                if (existeIsbn(libro.getIsbn())) {
+                    return false; // Error: duplicado
                 }
-                listaLibros.add(libro);
-                isbnRegistrados.add(isbnLimpio);
+                listaLibros.add(libro); // Agrega al arreglo
                 return true;
             }
 
-            public List<Libro> obtenerTodos() {
-                return listaLibros;
+            // Método para listar todos los libros con un ciclo
+            public void listarLibros() {
+                if (listaLibros.isEmpty()) {
+                    System.out.println("No hay libros registrados en el sistema.");
+                } else {
+                    System.out.println("\n--- LISTA DE LIBROS REGISTRADOS ---");
+                    for (int i = 0; i < listaLibros.size(); i++) {
+                        System.out.print((i + 1) + ". ");
+                        listaLibros.get(i).mostrarInfo();
+                    }
+                }
             }
         }
-
